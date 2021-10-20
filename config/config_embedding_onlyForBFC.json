@@ -1,0 +1,13 @@
+{
+  "net_paths": [
+    "data/preprocessing/BFC_based_gene_network_filtered.npz"],
+  "net_dims": [6007],
+  "net_nums": 1,
+  "hidden_dim": [2000, 1000, 600],
+  "batch_size": 256,
+  "lr": [0.01, 0.001, 0.001],
+  "momentum": 0.5,
+  "gamma": 0.5,
+  "epoch": [2000, 2000, 2000],
+  "topN": [10000]
+}

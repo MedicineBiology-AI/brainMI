@@ -1,0 +1,16 @@
+{
+  "net_paths": [
+    "data/preprocessing/BFC_based_gene_network_filtered.npz", 
+    "data/preprocessing/ppi_subnetwork_experimental.npz",
+    "data/preprocessing/ppi_subnetwork_database.npz"
+  ],
+  "net_dims": [6007, 18036, 10955],
+  "net_nums": 3,
+  "hidden_dim": [2000, 1000, 600],
+  "batch_size": 256,
+  "lr": [0.1, 0.05, 0.05],
+  "momentum": 0.5,
+  "gamma": 0.5,
+  "epoch": [2000, 2000, 2000],
+  "topN": [10000, 60000, 20000]
+}
