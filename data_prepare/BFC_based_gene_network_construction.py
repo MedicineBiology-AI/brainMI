@@ -15,20 +15,20 @@ def set_args():
     parser.add_argument('--expression_path', 
                         default="../data/raw/humanbrainmap/normalized_microarray_donor10021/MicroarrayExpression.csv", 
                         type=str, help="The path to probe expression file.")
-    parser.add_argument('--sampleAnnot_rna',
+    parser.add_argument('--sampleAnnot',
                         default="../data/raw/humanbrainmap/normalized_microarray_donor10021/SampleAnnot.csv",
                         type=str, help="The path to sample annotation file.")
     parser.add_argument('--sampleAnnot_microarray',
                         default="../data/raw/humanbrainmap/normalized_microarray_donor10021/SampleAnnot.csv",
                         type=str, help="The path to mcroarray sample annotation file.")
     parser.add_argument('--template_path',
-                        default="../data/raw/humanconnectome/CortexSubcortex_ColeAnticevic_NetPartition_wSubcorGSR_parcels_LR.dlabel.nii",
+                        default="../data/raw/cole/CortexSubcortex_ColeAnticevic_NetPartition_wSubcorGSR_parcels_LR.dlabel.nii",
                         type=str, help='The path to template file.')
     parser.add_argument('--r_sur_gii_path',
-                    default="../data/raw/humanconnectome/S1200.R.midthickness_MSMAll.32k_fs_LR.surf.gii",
+                    default="../data/raw/cole/S1200.R.midthickness_MSMAll.32k_fs_LR.surf.gii",
                     type=str, help="The path to left surface gii file.")
     parser.add_argument('--l_sur_gii_path',
-                        default="../data/raw/humanconnectome/S1200.L.midthickness_MSMAll.32k_fs_LR.surf.gii",
+                        default="../data/raw/cole/S1200.L.midthickness_MSMAll.32k_fs_LR.surf.gii",
                         type=str, help="The path to right surface gii file.")
     parser.add_argument('--tmp_path',
                         default='../data/preprocessing',
@@ -100,8 +100,8 @@ def obtain_FCmat(root_path):
 
     return FCMat_sorted, grayordinate_label
 
-def get_region_coords(sampleAnnot_rna, sampleAnnot_mcroarray):
-    df_1, df = pd.read_csv(sampleAnnot_rna), pd.read_csv(sampleAnnot_mcroarray)
+def get_region_coords(sampleAnnot, sampleAnnot_mcroarray):
+    df_1, df = pd.read_csv(sampleAnnot), pd.read_csv(sampleAnnot_mcroarray)
     # df_2.set_index(['well_id'], inplace=True)
     # df = df_2.loc[df_1['well_id']]
     # df.reset_index(inplace=True)
@@ -161,10 +161,10 @@ class brainGrayordinateCoords():
         
         return cxl_vertex, cxr_vertex, bs_voxel, cb_voxel
     
-    def mapping_region2grayordinate(self, sampleAnnot_rna, sampleAnnot_mcroarray, 
+    def mapping_region2grayordinate(self, sampleAnnot, sampleAnnot_mcroarray, 
                                     l_sur_gii_path, r_sur_gii_path, tmp_path):
         
-        slab_types, region_coords = get_region_coords(sampleAnnot_rna, sampleAnnot_mcroarray)
+        slab_types, region_coords = get_region_coords(sampleAnnot, sampleAnnot_mcroarray)
         
         cxl_vertex, cxr_vertex, bs_voxel, cb_voxel = self.get_coords()
         
@@ -291,7 +291,7 @@ def main():
     # construct brain region-parcel relationship matrix
     logging.info('Start to construct brain region-parcel relationship matrix')
     grayordinate = brainGrayordinateCoords(args.template_path, grayordinate_label)
-    region_grayordinate_relationship = grayordinate.mapping_region2grayordinate(args.sampleAnnot_rna,
+    region_grayordinate_relationship = grayordinate.mapping_region2grayordinate(args.sampleAnnot,
                                                                                 args.sampleAnnot_microarray,
                                                                                 args.l_sur_gii_path,
                                                                                 args.r_sur_gii_path,

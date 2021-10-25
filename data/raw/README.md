@@ -1,13 +1,33 @@
 # Data
-**Please obtain the appropriate permission to use these data.**
-
-**Please use the following Baidu pan link to download `raw` data, and use this folder to replace the original `raw` folder.**  
-百度链接: https://pan.baidu.com/s/1dw1M4gYV8sRcem1Qx_z7Ow 提取码: iicq 
+The downloaded raw data is organized as follows: 
+```
+├─humanconnectome
+│  └─HCP_S1200_1003_rfMRI_MSMAll_groupPCA_d4500_Eigenmaps.dtseries.nii
+├─cole
+│  ├─S1200.L.midthickness_MSMAll.32k_fs_LR.surf.gii
+│  ├─cortex_subcortex_community_order.txt
+│  ├─S1200.R.midthickness_MSMAll.32k_fs_LR.surf.gii
+│  ├─cortex_subcortex_parcel_network_assignments.txt
+│  └─CortexSubcortex_ColeAnticevic_NetPartition_wSubcorGSR_parcels_LR.dlabel.nii
+├─humanbrainmap
+│  └─normalized_microarray_donor10021
+│     ├─PACall.csv
+│     ├─Probes.csv
+│     ├─MicroarrayExpression.csv
+│     ├─Readme.txt
+│     ├─SampleAnnot.csv
+│     └─Ontology.csv
+├─README.md
+├─9606.protein.info.v11.0.txt
+├─HumanDO.obo
+├─9606.protein.links.detailed.v11.0.txt
+└─all_gene_disease_associations.tsv
+```
 
 - cole/ -- https://github.com/ColeLab/ColeAnticevicNetPartition [^1]
-- humanbrainmap/ -- https://human.brain-map.org/static/download [^2]
-- humanconnectome/ -- https://www.humanconnectome.org/study/hcp-young-adult/document/extensively-processed-fmri-data-documentation [^3]
-- 9606.protein.info.v11.0.txt and 9606.protein.links.detailed.v11.0.txt -- https://string-db.org/cgi/download?sessionId=b9lYJEqp9unf [^4]
+- humanbrainmap/normalized_microarray_donor10021/ -- https://human.brain-map.org/api/v2/well_known_file_download/178238373 [^2]
+- humanconnectome/ -- https://db.humanconnectome.org/app/action/ChooseDownloadResources?project=HCP_Resources&resource=GroupAvg&filePath=HCP_S1200_1003_rfMRI_MSMAll_groupPCA_d4500_Eigenmaps.dtseries.zip [^3]
+- 9606.protein.info.v11.0.txt and 9606.protein.links.detailed.v11.0.txt -- https://string-db.org/cgi/download?sessionId=%24input-%3E%7BsessionId%7D&species_text=Homo+sapiens [^4]
 - all_gene_disease_associations.tsv -- https://www.disgenet.org/downloads [^5]
 - HumanDo.obo -- https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/main/src/ontology [^6]
 
