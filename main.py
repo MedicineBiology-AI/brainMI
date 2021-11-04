@@ -39,8 +39,8 @@ def evalution(save_path, disease_genes):
 def main():
     args =  set_args()
 
-    # for cfg_path, save_path in zip(args.cfg_paths, args.save_paths):
-    #     obtain_gene_features(cfg_path, save_path)
+    for cfg_path, save_path in zip(args.cfg_paths, args.save_paths):
+        obtain_gene_features(cfg_path, save_path)
 
     for save_path in args.save_paths:
         if save_path.endswith('onlyforBFC_gene_net'):
