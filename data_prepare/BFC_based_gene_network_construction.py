@@ -201,13 +201,15 @@ class brainGrayordinateCoords():
                         
             elif slab_type == 'BS':
                 distances = np.sum(np.square(bs_voxel - coord), axis=1)
-                if np.min(distances) <= -2:
+                # if np.min(distances) <= -2: # only consider CX, not BS
+                if np.min(distances) <= 1:
                     index = np.squeeze(np.where(distances == np.min(distances))) + self.indexOfsets[2]
                     region_grayordinate_relationship[i, self.grayordinate_label[index]] = 1
                     
             elif slab_type == 'CB':
                 distances = np.sum(np.square(cb_voxel - coord), axis=1)
-                if np.min(distances) <= -2:
+                # if np.min(distances) <= -2: # only consider CX, not CB
+                if np.min(distances) <= 1:
                     index = np.squeeze(np.where(distances == np.min(distances))) + self.indexOfsets[3]
                     region_grayordinate_relationship[i, self.grayordinate_label[index]] = 1
         
