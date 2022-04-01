@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from torch.optim import Adam, SGD
 
-from data_load import netsDataset, load_networks, netsDataset2
+from data_load import netsDataset, load_networks
 from utils import obtain_constraints
 from model import autoEncoder, encoderLoss
 

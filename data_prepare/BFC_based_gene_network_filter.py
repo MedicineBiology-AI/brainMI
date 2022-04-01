@@ -10,7 +10,7 @@ def set_args():
     parser.add_argument('--N_path', 
                       default="../data/preprocessing/BFC_based_gene_network.npz", 
                       type=str, help='')
-    parser.add_argument('--p', default=0.65,
+    parser.add_argument('--p', default=0.62982771,
                         type=float, help='')
     
     return parser.parse_args()

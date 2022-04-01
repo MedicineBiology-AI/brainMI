@@ -63,6 +63,9 @@ def obtain_FCmat(root_path):
     def obtain_grayordinate_label(parcelCIFTIFile):
         img = nib.load(parcelCIFTIFile)
         data = np.array(img.dataobj).squeeze().astype('int16')
+        tmp = np.sort(np.array(list(set(data))))
+        tmp_dict = {d:i for i,d in enumerate(tmp)}
+        data = [tmp_dict[i] for i in data]
         
         return data
     
@@ -95,8 +98,7 @@ def obtain_FCmat(root_path):
     FCmat = np.corrcoef(lr_parcellated)
     FCMat_sorted = FCmat[indsort,indsort.T]
     
-    grayordinate_label = obtain_grayordinate_label(parcelCIFTIFile) - 1
-    
+    grayordinate_label = obtain_grayordinate_label(parcelCIFTIFile) # - 1
 
     return FCMat_sorted, grayordinate_label
 
@@ -315,7 +317,7 @@ def main():
     N_high = N1_high / (N2_high + 1e-8)
     logging.info('End constructing BFC-based gene network')
     
-    np.savez(os.path.join(args.output, "BFC_based_network.npz"), N=N_high, symbol=genes,
+    np.savez(os.path.join(args.output, "BFC_based_gene_network.npz"), N=N_high, symbol=genes,
              region_parcel_relation=np.array(region_grayordinate_relationship))
 
 if __name__ == "__main__":
