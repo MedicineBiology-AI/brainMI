@@ -40,7 +40,9 @@ def main():
     args =  set_args()
 
     for cfg_path, save_path in zip(args.cfg_paths, args.save_paths):
-        obtain_gene_features(cfg_path, save_path)
+        if not os.path.exists(save_path):
+            os.mkdir(save_path)
+            obtain_gene_features(cfg_path, save_path)
 
     for save_path in args.save_paths:
         if save_path.endswith('onlyforBFC_gene_net'):
